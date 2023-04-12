@@ -10,19 +10,7 @@ This vulnerable app includes the following capabilities to experiment with:
 * [Docker Image Scanning](#docker-image-scanning) for base images with known vulnerabilities in system libraries
 * [Runtime alerts](#runtime-alerts) for detecting an invocation of vulnerable functions in open source dependencies
 
-## Running
-```bash
-mongod &
-
-git clone https://github.com/snyk-labs/nodejs-goof
-npm install
-npm start
-```
-This will run Goof locally, using a local mongo on the default port and listening on port 3001 (http://localhost:3001)
-
-Note: You *have* to use an old version of MongoDB version due to some of these old libraries' database server APIs. MongoDB 3 is known to work ok.
-
-You can also run the MongoDB server individually via Docker, such as:
+You can run the MongoDB server individually via Docker, such as:
 
 ```sh
 docker run --rm -p 27017:27017 mongo:3
@@ -32,20 +20,6 @@ docker run --rm -p 27017:27017 mongo:3
 ```bash
 docker-compose up --build
 docker-compose down
-```
-
-### Heroku usage
-Goof requires attaching a MongoLab service to be deployed as a Heroku app. 
-That sets up the MONGOLAB_URI env var so everything after should just work. 
-
-### CloudFoundry usage
-Goof requires attaching a MongoLab service and naming it "goof-mongo" to be deployed on CloudFoundry. 
-The code explicitly looks for credentials to that service. 
-
-### Cleanup
-To bulk delete the current list of TODO items from the DB run:
-```bash
-npm run cleanup
 ```
 
 ## Exploiting the vulnerabilities
